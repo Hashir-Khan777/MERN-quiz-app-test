@@ -22,6 +22,7 @@ export default createSlice({
       state.imageLoading = false;
     });
     builder.addCase(Auth.verifyUser.fulfilled, (state, { payload }) => {
+      state.loading = false;
       state.user = payload;
     });
     builder.addCase(Auth.logout.fulfilled, (state, { payload }) => {
@@ -54,7 +55,8 @@ export default createSlice({
       isAnyOf(
         Auth.login.rejected,
         Auth.register.rejected,
-        Auth.adminLogin.rejected
+        Auth.adminLogin.rejected,
+        Auth.verifyUser.rejected
       ),
       (state) => {
         state.loading = false;

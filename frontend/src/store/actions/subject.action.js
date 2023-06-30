@@ -67,4 +67,31 @@ const getSubjects = createAsyncThunk(
   }
 );
 
-export { addSubject, getSubjects };
+const getOneSubjects = createAsyncThunk(
+  "subject/get/one",
+  async (subjectForm, { rejectWithValue, dispatch }) => {
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BASE_API_URL}/subject/${subjectForm._id}`,
+        {
+          headers: { Authorization: `Bearer ${cookies.get("_admin")}` },
+        }
+      );
+      return data;
+    } catch (err) {
+      dispatch(
+        showToast({
+          type: "error",
+          message: err.response.data.message
+            ? err.response.data.message
+            : err.message,
+        })
+      );
+      return rejectWithValue(
+        err.response.data.message ? err.response.data.message : err.message
+      );
+    }
+  }
+);
+
+export { addSubject, getSubjects, getOneSubjects };

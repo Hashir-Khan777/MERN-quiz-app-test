@@ -16,7 +16,7 @@ SubjectRouter.get("/", async (req, res) => {
 SubjectRouter.get("/:_id", async (req, res) => {
   try {
     const { _id } = req.params;
-    const subject = await SubjectModel.find({ _id }).populate("questions");
+    const subject = await SubjectModel.findOne({ _id }).populate("questions");
     res.status(200).send(subject);
   } catch (err) {
     res.status(500).send(err);

@@ -21,6 +21,16 @@ export default createSlice({
     builder.addCase(Subject.addSubject.rejected, (state) => {
       state.loading = false;
     });
+    builder.addCase(Subject.getOneSubjects.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(Subject.getOneSubjects.fulfilled, (state, { payload }) => {
+      state.subject = payload;
+      state.loading = false;
+    });
+    builder.addCase(Subject.getOneSubjects.rejected, (state) => {
+      state.loading = false;
+    });
     builder.addCase(Subject.getSubjects.pending, (state) => {
       state.loading = true;
     });

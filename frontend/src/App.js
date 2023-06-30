@@ -3,6 +3,7 @@ import AppRouter from "./router";
 import { useDispatch, useSelector } from "react-redux";
 import { showToast } from "./store/reducers/toast.reducer";
 import { useEffect } from "react";
+import { Auth } from "./store/actions";
 
 const App = () => {
   const toast = useToast();
@@ -27,6 +28,10 @@ const App = () => {
       );
     }
   }, [type, message, dispatch, toast]);
+
+  useEffect(() => {
+    dispatch(Auth.verifyUser());
+  }, [dispatch]);
 
   return (
     <ChakraProvider>

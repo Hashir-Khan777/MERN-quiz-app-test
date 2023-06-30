@@ -6,6 +6,7 @@ import {
   AdminResults,
   Home,
   Login,
+  Quiz,
   Register,
 } from "../pages";
 import Cookies from "universal-cookie";
@@ -61,6 +62,15 @@ const AppRouter = () => {
         element={
           <PrivateRoute user={user}>
             <Home />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        caseSensitive
+        path="/quiz/:subject/:subjectId"
+        element={
+          <PrivateRoute user={user}>
+            <Quiz />
           </PrivateRoute>
         }
       />
