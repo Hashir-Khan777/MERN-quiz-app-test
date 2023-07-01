@@ -12,6 +12,12 @@ const SubjectSchema = new mongoose.Schema(
         ref: "Question",
       },
     ],
+    attempted: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   {
     timestamps: true,

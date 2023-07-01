@@ -8,6 +8,7 @@ import {
   Login,
   Quiz,
   Register,
+  Result,
 } from "../pages";
 import Cookies from "universal-cookie";
 
@@ -71,6 +72,15 @@ const AppRouter = () => {
         element={
           <PrivateRoute user={user}>
             <Quiz />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        caseSensitive
+        path="/result/:subject/:student"
+        element={
+          <PrivateRoute user={user}>
+            <Result />
           </PrivateRoute>
         }
       />

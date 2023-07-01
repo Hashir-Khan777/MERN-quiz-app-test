@@ -45,6 +45,14 @@ const AddQuestion = ({ isOpen, onClose }) => {
           onClose,
         })
       );
+      setForm({
+        data: {
+          question: "",
+          marks: "",
+          correctAnswer: "",
+          options: "",
+        },
+      });
     }
   };
 

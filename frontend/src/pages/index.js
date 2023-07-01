@@ -3,6 +3,7 @@ import Register from "./register";
 import Home from "./home";
 import { AdminLogin, AdminDashboard, AdminResults } from "./admin";
 import Quiz from "./quiz";
+import Result from "./result";
 
 export {
   Login,
@@ -12,4 +13,5 @@ export {
   AdminDashboard,
   AdminResults,
   Quiz,
+  Result,
 };

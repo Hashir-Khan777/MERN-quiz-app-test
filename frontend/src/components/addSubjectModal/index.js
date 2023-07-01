@@ -50,6 +50,11 @@ const AddSubject = ({ isOpen, onClose }) => {
           onClose,
         })
       );
+      setForm({
+        data: {
+          name: "",
+        },
+      });
     }
   };
 

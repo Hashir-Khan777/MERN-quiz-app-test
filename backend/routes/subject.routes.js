@@ -25,11 +25,13 @@ SubjectRouter.get("/:_id", async (req, res) => {
 
 SubjectRouter.post("/", JwtService.isAdmin, async (req, res) => {
   try {
-    const subject = await SubjectModel.create({ ...req.body }).populate(
-      "questions"
-    );
+    const createdSubject = await SubjectModel.create({ ...req.body });
+    const subject = await SubjectModel.findOne({
+      _id: createdSubject._id,
+    }).populate("questions");
     res.status(200).send(subject);
   } catch (err) {
+    console.log(err);
     res.status(500).send(err);
   }
 });

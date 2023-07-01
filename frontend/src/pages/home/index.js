@@ -66,19 +66,25 @@ const Home = () => {
               }, 0);
 
               return (
-                <Tr>
+                <Tr key={subject._id}>
                   <Td>{subject?.name}</Td>
                   <Td>{subject?.questions?.length}</Td>
                   <Td>{totalMarks}</Td>
                   <Td>
-                    <Link
-                      to={`/quiz/${subject?.name}/${subject?._id}`}
-                      onClick={() =>
-                        document.documentElement.requestFullscreen()
-                      }
-                    >
-                      <Button colorScheme="blue">Take Quiz</Button>
-                    </Link>
+                    {subject.attempted.find((x) => x === user._id) ? (
+                      <Link to={`/result/${subject?._id}/${user?._id}`}>
+                        <Button colorScheme="blue">View Result</Button>
+                      </Link>
+                    ) : (
+                      <Link
+                        to={`/quiz/${subject?.name}/${subject?._id}`}
+                        onClick={() =>
+                          document.documentElement.requestFullscreen()
+                        }
+                      >
+                        <Button colorScheme="blue">Take Quiz</Button>
+                      </Link>
+                    )}
                   </Td>
                 </Tr>
               );
